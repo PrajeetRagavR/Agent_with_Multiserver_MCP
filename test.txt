@@ -1,0 +1,4 @@
+A poem in test.txt
+Roses are red,
+Violets are blue,
+This poem is for you.
