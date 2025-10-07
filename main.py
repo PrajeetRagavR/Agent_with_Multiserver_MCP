@@ -40,6 +40,10 @@ async def main():
             "transport": "stdio",
             "command": "python",
             "args": [abs_path("servers/postgres_server.py")],
+        },
+        "kart": {
+            "url": "http://127.0.0.1:8001/mcp",  # Replace with the remote server's URL
+            "transport": "streamable_http"
         }
     }
 

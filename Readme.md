@@ -15,6 +15,7 @@ This project utilizes a robust and modern technology stack to achieve its goals.
 *   **Streamlit**: Used for building the interactive web-based user interface (UI). Streamlit's simplicity and rapid development capabilities make it ideal for creating data applications and dashboards with minimal code.
 *   **LangChain**: A framework for developing applications powered by language models. It provides tools and abstractions for chaining together different components (LLMs, tools, agents, memory) to create complex LLM-driven applications.
 *   **MCP (Model Context Protocol)**: A custom framework that enables the agent to interact with various specialized backend servers (e.g., math, files, postgres). It facilitates the creation and integration of custom tools that the LLM agent can utilize. This platform is designed to be extensible, allowing for easy addition of new server functionalities and tools.
+*   **OpenWeatherMap API**: Used by the `weather_server.py` to fetch current weather data.
 *   **PostgreSQL**: A powerful, open-source relational database system used for storing and managing structured data. It provides reliability, data integrity, and advanced features necessary for complex data operations.
 *   **Groq**: An inference engine that provides fast and efficient execution of large language models. It is used here to power the LLM agent, enabling quick responses and efficient processing of natural language queries.
 
@@ -34,6 +35,7 @@ The project is organized into the following key directories and files:
     *   `math_server.py`: Offers tools for performing mathematical calculations.
     *   `postgres_server.py`: Enables interaction with a PostgreSQL database.
     *   `prompt_server.py`: Manages and serves various prompts used by the agent.
+    *   `weather_server.py`: Provides tools for fetching current weather information.
 *   `tmp/`: A temporary directory used for file manipulation operations by the `files_server.py`.
 
 
@@ -80,11 +82,12 @@ To get the MCP Agent project up and running, follow these steps:
 
 5.  **Environment Variables**: (If applicable)
 
-    Create a `.env` file in the root directory of the project and add any necessary environment variables, such as API keys for LLMs or database connection strings. Refer to `.env.example` (if provided) for required variables.
+    Create a `.env` file in the root directory of the project and add any necessary environment variables, such as API keys for LLMs, weather, or database connection strings. Refer to `.env.example` (if provided) for required variables.
 
     ```
     # Example .env content
     GROQ_API_KEY="your_groq_api_key"
+    WEATHER_API_KEY="your_openweathermap_api_key"
     DATABASE_URL="postgresql://user:password@host:port/database"
     ```
 
@@ -129,10 +132,10 @@ Once the Streamlit application is running, you can interact with the MCP Agent t
 
 Here are some common issues you might encounter and how to resolve them:
 
-*   **"Failed to load resources from files: unhandled errors in a TaskGroup (1 sub-exception)" or "Could not load tools from MCP client: unhandled errors in a TaskGroup (1 sub-exception)"**: These errors often indicate that one or more of the backend servers (e.g., `files_server.py`, `postgres_server.py`) failed to initialize correctly or maintain a connection. 
+*   **"Failed to load resources from files: unhandled errors in a TaskGroup (1 sub-exception)" or "Could not load tools from MCP client: unhandled errors in a TaskGroup (1 sub-exception)"**: These errors often indicate that one or more of the backend servers (e.g., `files_server.py`, `postgres_server.py`, `weather_server.py`) failed to initialize correctly or maintain a connection. 
     *   **Check Server Logs**: Examine the terminal where `streamlit_app.py` is running for more detailed error messages from the `try-except` blocks in the server files. This will provide specific clues about which server is failing and why.
     *   **Verify Dependencies**: Ensure all dependencies are correctly installed by running `pip install -r requirements.txt`.
-    *   **Environment Variables**: Double-check that all necessary environment variables (e.g., `GROQ_API_KEY`, `DATABASE_URL`) are set correctly in your `.env` file.
+    *   **Environment Variables**: Double-check that all necessary environment variables (e.g., `GROQ_API_KEY`, `DATABASE_URL`, `WEATHER_API_KEY`) are set correctly in your `.env` file.
     *   **PostgreSQL Status**: If `postgres_server.py` is failing, ensure your PostgreSQL server is running and accessible, and that the connection details in `DATABASE_URL` are accurate.
     *   **Port Conflicts**: Ensure that no other applications are using the same ports that the MCP servers are trying to bind to.
 

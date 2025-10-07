@@ -17,6 +17,16 @@ def multiply(a: int, b: int) -> int:
     return a * b
 
 @mcp.tool()
+def subtract(a: int, b: int) -> int:
+    """Subtract two numbers."""
+    return a - b
+
+@mcp.tool()
+def divide(a: int, b: int) -> float:
+    """Divide two numbers."""
+    return a / b
+
+@mcp.tool()
 def eval_expr(expr: str) -> float:
     """Safely evaluate a basic arithmetic expression."""
     allowed = set("0123456789+-*/(). ")
