@@ -80,4 +80,7 @@ def summarize_file_prompt(file_content: str):
 
 
 if __name__ == "__main__":
-    mcp.run(transport="stdio")
+    try:
+        mcp.run(transport="stdio")
+    except Exception as e:
+        print(f"Error running files_server: {e}")
