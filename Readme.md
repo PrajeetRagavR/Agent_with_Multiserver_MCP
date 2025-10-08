@@ -25,17 +25,19 @@ This project utilizes a robust and modern technology stack to achieve its goals.
 The project is organized into the following key directories and files:
 
 *   `main.py`: The main entry point for the backend logic and testing of the MCP agent. It initializes the servers, loads tools, creates the agent, and demonstrates various interactions.
-*   `streamlit_app.py`: The Streamlit application that provides the graphical user interface (GUI) for interacting with the MCP agent. It handles chat interactions, document summarization, and displays agent responses.
+*   `app.py`: The Streamlit application that provides the graphical user interface (GUI) for interacting with the MCP agent. It handles chat interactions, document summarization, and displays agent responses.
 *   `agent.py`: Contains the core logic for the MCP agent, including how it processes natural language queries, selects tools, and executes actions.
 *   `llm.py`: Defines the configuration and integration with the Large Language Model (LLM) used by the agent, specifically Groq.
 *   `memory.py`: Manages the conversational memory of the agent, allowing it to maintain context across multiple turns of interaction.
 *   `requirements.txt`: Lists all the Python dependencies required for the project.
 *   `servers/`: This directory contains the implementations of various backend servers that provide tools to the MCP agent:
+    *   `csv_server.py`: Provides tools for interacting with CSV files.
     *   `files_server.py`: Provides tools for file system operations (e.g., listing, reading, writing, deleting, renaming files).
     *   `math_server.py`: Offers tools for performing mathematical calculations.
     *   `postgres_server.py`: Enables interaction with a PostgreSQL database.
     *   `prompt_server.py`: Manages and serves various prompts used by the agent.
     *   `weather_server.py`: Provides tools for fetching current weather information.
+    *   `xml_server.py`: Provides tools for interacting with XML files.
 *   `tmp/`: A temporary directory used for file manipulation operations by the `files_server.py`.
 
 
@@ -100,7 +102,7 @@ To get the MCP Agent project up and running, follow these steps:
     Once all dependencies are installed and environment variables are set, you can launch the Streamlit application:
 
     ```bash
-    streamlit run streamlit_app.py
+    streamlit run app.py
     ```
 
     This will open the application in your web browser.
