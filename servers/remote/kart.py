@@ -4,12 +4,13 @@ mcp = FastMCP("kart")
 
 # Cart to store items
 mcp_cart = {}
-
+shop_items={'apple':10,'orange':20,'banana':30}
 @mcp.tool()
 def add_item(key: str, quantity: int) -> str:
     """Add an item to the cart with specified quantity"""
     mcp_cart[key] = quantity
     return f"Added {key} with quantity: {quantity}"
+
 
 @mcp.tool()
 def get_items() -> dict:
@@ -23,7 +24,6 @@ def remove_item(key: str) -> str:
         value = mcp_cart.pop(key)
         return f"Removed {key}: {value}"
     return f"Key {key} not found"
-
 
 
 if __name__ == "__main__":

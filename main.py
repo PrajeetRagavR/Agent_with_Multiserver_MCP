@@ -21,6 +21,15 @@ async def main():
     # Define MCP servers
     # ---------------------------
     servers = {
+        "xml": {
+            "transport": "stdio",
+            "command": "python",
+            "args": [abs_path("servers/xml_server.py")],
+        },
+        "csv": {
+            "transport": "streamable_http",
+            "url": "http://127.0.0.1:8002/mcp",
+        },
         "math": {
             "transport": "stdio",
             "command": "python",

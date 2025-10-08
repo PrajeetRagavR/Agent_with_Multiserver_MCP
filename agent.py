@@ -3,7 +3,7 @@ from langchain_core.messages import BaseMessage, SystemMessage, HumanMessage
 from langchain_groq import ChatGroq
 
 def create_mcp_agent(tools, checkpointer):
-    llm = ChatGroq(model="meta-llama/llama-4-maverick-17b-128e-instruct", temperature=0)
+    llm = ChatGroq(model="meta-llama/llama-4-scout-17b-16e-instruct", temperature=0)
     system_message = SystemMessage(content="You are a helpful AI assistant. You have access to to the mcp servers. Use them to answer user queries. Prioritize using tools over direct answers when appropriate.")
     agent = create_react_agent(llm, tools, checkpointer=checkpointer)
     return agent
